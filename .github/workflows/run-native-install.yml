@@ -41,7 +41,7 @@ jobs:
           ls -l
       - name: Create config.yml
         run: |
-          echo -e "EDXAPP_LMS_BASE: '$(curl ipinfo.io/ip)'\nEDXAPP_CMS_BASE: '$(curl ipinfo.io/ip):18010'\nSANDBOX_ENABLE_DISCOVERY: true\nedx_django_service_user: runner" > config.yml
+          echo -e "EDXAPP_LMS_BASE: '$(curl ipinfo.io/ip)'\nEDXAPP_CMS_BASE: '$(curl ipinfo.io/ip):18010'\nSANDBOX_ENABLE_DISCOVERY: true\necho -e "EDXAPP_LMS_BASE: '$(curl ipinfo.io/ip)'\nEDXAPP_CMS_BASE: '$(curl ipinfo.io/ip):18010'\nSANDBOX_ENABLE_DISCOVERY: true\ndiscovery_user: runner" > config.yml" > config.yml
           ls -l
       - name: Native Install
         run: wget https://raw.githubusercontent.com/edx/configuration/$OPENEDX_RELEASE/util/install/native.sh -O - | bash
