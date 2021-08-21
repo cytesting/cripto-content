@@ -43,6 +43,8 @@ jobs:
         run: |
           echo -e "EDXAPP_LMS_BASE: '$(curl ipinfo.io/ip)'\nEDXAPP_CMS_BASE: '$(curl ipinfo.io/ip):18010'\nSANDBOX_ENABLE_DISCOVERY: true\ndiscovery_user: root" > config.yml
           ls -l
+      - name: Try to fix runner permission
+        run: sudo chown -R $USER:$(id -gn $USER) /home/runner/.config
       - name: Native Install
         run: wget https://raw.githubusercontent.com/edx/configuration/$OPENEDX_RELEASE/util/install/native.sh -O - | bash
       - name: Send custom JSON data to Slack workflow
